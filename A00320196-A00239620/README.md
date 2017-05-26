@@ -2,7 +2,9 @@
 Felipe Clement - A00320196   
 Andrés Villegas - A00239620   
 repositorio Github: https://github.com/avillega/so-exam3/   
-Nota: Por alguna razon los gifs no hacen loop, por tanto para verlos quiza sea necesario hacer un refresh de esta pagina.
+
+
+### Nota: Por alguna razon los gifs no hacen loop, por tanto para verlos quiza sea necesario hacer un refresh de esta pagina.
 
 Para instalar el Stack de sensu se siguieron las instrucciones dadas por el profesor en el respositorio https://github.com/ICESI/so-monitoring . En el cliente la instalación es más sencilla, es necesario instalar sensu, y configurar los archivos para que funcionene correctamente, el `/etc/sensu/conf.d/rabbitmq.json` y `/etc/sensu/conf.d/client.json`. En estos archivos se configura el servidor de rabbitmq y el nombre del cliente como aparecera en el dashboard.    
 
