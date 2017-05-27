@@ -22,3 +22,95 @@ Para agregar nuevos checks es necesario agregar el programa que se va a usar par
 ![alt text](https://raw.githubusercontent.com/avillega/so-exam3/ae989515/A00320196-A00239620/resources/video_plugin_extra.gif)
 
 
+## Instalacion Stack ELK
+
+El stack ELK consiste en Elasticsearch, Logstash, Kibana y Filebeat, a continuacion se indica el proceso de instalacion de estos servicios.
+
+#### ElasticSearch
+
+El primer paso es instalar un jdk de java de version 1.6 en adelante, lo cuel se puede lograr a traves del siguiente comando:
+>yum install java-1.8.0-openjdk.x86_64
+
+Despues, se debe descargar e instalar la llave publica para el repositorio de Elasticsearch:
+>rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+Se procede a crear el repositorio de Elasticsearch de la siguiente manera:
+
+>[elasticsearch-5.x]
+>name=Elasticsearch repository for 5.x packages
+>baseurl=https://artifacts.elastic.co/packages/5.x/yum
+>gpgcheck=1
+>gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+>enabled=1
+>autorefresh=1
+>type=rpm-md
+
+Habiendo hecho esto, solo se debe instalar mediante el siguiente comando:
+>yum install elasticsearch
+
+#### Logstash
+
+Se debe a crear el repositorio de Logstash de la siguiente manera:
+
+>[logstash-5.x]
+>name=Elastic repository for 5.x packages
+>baseurl=https://artifacts.elastic.co/packages/5.x/yum
+>gpgcheck=1
+>gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+>enabled=1
+>autorefresh=1
+>type=rpm-md
+
+Habiendo hecho esto, solo se debe instalar mediante el siguiente comando:
+>yum install logstash
+
+#### Kibana
+
+Se debe a crear el repositorio de Kibana de la siguiente manera:
+
+>[kibana-5.x]
+>name=Kibana repository for 5.x packages
+>baseurl=https://artifacts.elastic.co/packages/5.x/yum
+>gpgcheck=1
+>gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+>enabled=1
+>autorefresh=1
+>type=rpm-md
+
+Habiendo hecho esto, solo se debe instalar mediante el siguiente comando:
+>yum install kibana
+
+#### Filebeat
+
+Se debe descargar e instalar la llave publica para el repositorio de Filebeat:
+>rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+Se procede a crear el repositorio de Filebeat de la siguiente manera:
+
+>[elastic-5.x]
+>name=Elastic repository for 5.x packages
+>baseurl=https://artifacts.elastic.co/packages/5.x/yum
+>gpgcheck=1
+>gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+>enabled=1
+>autorefresh=1
+>type=rpm-md
+
+Habiendo hecho esto, solo se debe instalar mediante el siguiente comando:
+>yum install filebeat
+
+Posteriormente, se desea iniciar Filebeat en el arranque, lo cual se hace a traves del comando:
+>sudo chkconfig --add filebeat
+
+### Ejemplo
+
+La configuracion de ElasticSearch puede ser modificada en el siguiente archivo: /etc/elasticsearch/elasticsearch.yml
+
+Donde se puede cambiar la ip y puerto del servidor segun lo sea necesario; en caso de cambiar el puerto a uno que no este abierto, se debera usar (ejemplo con puerto 9200):
+
+>firewall-cmd --zone=public --add-port=9200/tcp --permanent
+>firewall-cmd --reload
+
+Prueba de instalacion correcta de kibana y elasticsearch
+
+![alt text](https://github.com/ClementFelipe/so-exam3/blob/master/A00320196-A00239620/resources/Instalacion%20ELK.png)
